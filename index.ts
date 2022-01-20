@@ -17,7 +17,9 @@ const botSettings: ConstructorOptions = {
 };
 const url = process.env.APP_URL || "https://youtube-poster.herokuapp.com:443";
 const bot = new TeleBot(process.env.BOT_TOKEN ?? "", botSettings);
-bot.setWebHook(`${url}/bot${process.env.BOT_TOKEN}`);
+bot.setWebHook(`${url}/bot${process.env.BOT_TOKEN}`).then((v) => {
+  console.log("Setted Webhook");
+});
 
 bot.onText(youtubeLinkRegexp, async (msg) => {
   console.log("Youtube Link Recieved");
