@@ -4,7 +4,9 @@
   "description": "YouTube Bot for reposting downloaded videos to channel",
   "main": "index.js",
   "scripts": {
-    "start": "ts-node index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "start:dev": "ts-node index.ts",
     "serve": "nodemon index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
