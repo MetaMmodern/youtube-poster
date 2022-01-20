@@ -17,8 +17,13 @@ const botSettings: ConstructorOptions = {
 };
 const url = process.env.APP_URL || "https://youtube-poster.herokuapp.com:443";
 const bot = new TeleBot(process.env.BOT_TOKEN ?? "", botSettings);
+
 bot.setWebHook(`${url}/bot${process.env.BOT_TOKEN}`).then((v) => {
   console.log("Setted Webhook");
+});
+
+bot.on("message", function onMessage(msg) {
+  bot.sendMessage(msg.chat.id, "I am alive on Heroku!");
 });
 
 bot.onText(youtubeLinkRegexp, async (msg) => {
