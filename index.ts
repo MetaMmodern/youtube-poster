@@ -1,10 +1,10 @@
 import "dotenv/config";
 import TeleBot, { ConstructorOptions } from "node-telegram-bot-api";
 import ytdl from "ytdl-core";
-import stream, { PassThrough, Stream } from "stream";
-import path from "path";
-import fs from "fs";
+
 process.env.NTBA_FIX_319 = "1";
+
+console.log(process.env);
 const youtubeLinkRegexp =
   /^(?:https?:\/\/)?(?:m\.|www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
 
