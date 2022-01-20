@@ -13,7 +13,7 @@ const validateUser = (chatId: number) =>
 
 const botSettings: ConstructorOptions = {
   // polling: true,
-  webHook: { port: Number(process.env.PORT) },
+  webHook: { port: Number(process.env.PORT), host: "0.0.0.0" },
 };
 const url = process.env.APP_URL || "https://youtube-poster.herokuapp.com:443";
 const bot = new TeleBot(process.env.BOT_TOKEN ?? "", botSettings);
