@@ -11,8 +11,13 @@ const youtubeLinkRegexp =
 const validateUser = (chatId: number) =>
   chatId.toString() === process.env.ALLOWED_USER_CHAT;
 
-const botSettings: ConstructorOptions = { polling: true };
+const botSettings: ConstructorOptions = {
+  // polling: true,
+  webHook: { port: Number(process.env.PORT) },
+};
+const url = process.env.APP_URL || "https://youtube-poster.herokuapp.com:443";
 const bot = new TeleBot(process.env.BOT_TOKEN ?? "", botSettings);
+bot.setWebHook(`${url}/bot${process.env.BOT_TOKEN}`);
 
 bot.onText(youtubeLinkRegexp, async (msg) => {
   console.log("Youtube Link Recieved");
