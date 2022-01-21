@@ -53,8 +53,8 @@ bot.onText(youtubeLinkRegexp, async (msg) => {
       const data = Buffer.concat(bufs);
       bot
         .sendVideo(msg.chat.id, data, {
-          parse_mode: "MarkdownV2",
-          caption: `[${info.videoDetails.title}](${msg.text})`,
+          parse_mode: "HTML",
+          caption: `<a href="${msg.text}">${info.videoDetails.title}</a>`,
         })
         .then(() => {
           console.log("Sent a Video");
