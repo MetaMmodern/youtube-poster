@@ -52,13 +52,16 @@ bot.onText(youtubeLinkRegexp, async (msg) => {
       bot.sendMessage(msg.chat.id, "Sending the file...");
       const data = Buffer.concat(bufs);
       bot
-        .sendVideo(msg.chat.id, data, {
+        .sendVideo(process.env.CHAT_ID!, data, {
           parse_mode: "HTML",
           caption: `<a href="${msg.text}">${info.videoDetails.title}</a>`,
         })
         .then(() => {
           console.log("Sent a Video");
           bot.sendMessage(msg.chat.id, "Sent the file.");
+        })
+        .catch((reason) => {
+          bot.sendMessage(msg.chat.id, "Was not sent because: " + reason);
         });
     });
   }
